@@ -1,15 +1,15 @@
 package ru.netology.films;
 
 public class FilmsManager {
-    String[] names;
-    int n;
-    public FilmsManager(String[] names) {
-        this.names = names;
+    private String[] names;
+    private int n;
+    public FilmsManager() {
         this.n = 10;
+        names = new String[0];
     }
-    public FilmsManager(String[] names, int n) {
-        this.names = names;
+    public FilmsManager(int n) {
         this.n = n;
+        names = new String[0];
     }
 
     public void add(String name) {

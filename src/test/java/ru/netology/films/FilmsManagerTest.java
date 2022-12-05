@@ -10,24 +10,25 @@ class FilmsManagerTest {
     @Test
     public void testFindAll() {
         String[] expected = {"отель Белград"};
-        FilmsManager manager = new FilmsManager(expected);
+        FilmsManager manager = new FilmsManager();
+        manager.add("отель Белград");
         String[] actual = manager.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void testAdd() {
-        String[] films = {"отель Белград"};
-        FilmsManager manager = new FilmsManager(films);
+        FilmsManager manager = new FilmsManager();
         manager.add("Вперёд");
-        String[] expected = {"отель Белград", "Вперёд"};
+        String[] expected = {"Вперёд"};
         String[] actual = manager.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
     public void testFindLast() {
-        String[] films = {"отель Белград", "Вперёд"};
-        FilmsManager manager = new FilmsManager(films);
+        FilmsManager manager = new FilmsManager();
+        manager.add("отель Белград");
+        manager.add("Вперёд");
         String[] expected = {"Вперёд","отель Белград"};
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
@@ -35,8 +36,9 @@ class FilmsManagerTest {
 
     @Test
     public void testFindLastN() {
-        String[] films = {"отель Белград", "Вперёд"};
-        FilmsManager manager = new FilmsManager(films, 1);
+        FilmsManager manager = new FilmsManager(1);
+        manager.add("отель Белград");
+        manager.add("Вперёд");
         String[] expected = {"Вперёд"};
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
